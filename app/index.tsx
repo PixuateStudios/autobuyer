@@ -9,27 +9,27 @@ export default function Index() {
         width: "100%",
         height: "100%",
         backgroundColor: "#00E567",
-        
+
         display: "flex",
         justifyContent: "center",
         alignItems:"center"
       }}
     >
       <View style={{ display: "flex", flexDirection:"row", justifyContent:"center", alignItems: "center", width: "100%"}}>
-        
+
         <Image
           source={require("@/assets/icons/company/tire.svg")}
           placeholder={"tire"}
-          style={{ width: 45, height: 45}}
+          style={{ width: 75, height: 75}}
           contentFit="contain"
         />
-        
-        <Text style={{fontFamily:"Funnel_Bold", color:'white', fontSize: 40, marginLeft: 10}}>
+
+        {/*<Text style={{fontFamily:"Funnel_Bold", color:'white', fontSize: 40, marginLeft: 10}}>
           autoquest
-        </Text>
-        
+        </Text>*/}
+
       </View>
-        
+
 
     </SafeAreaView>
   );
@@ -38,7 +38,7 @@ export default function Index() {
 
 
 const styles = StyleSheet.create({
-  
 
-  
+
+
 })

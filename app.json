@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "autobuyer",
+    "name": "AutoQuest",
     "slug": "autobuyer",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.autoquest.autobuyer",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -31,7 +35,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "imageWidth": 0,
           "resizeMode": "contain",
           "backgroundColor": "#00E567"
         }
@@ -40,6 +44,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "e99bc418-6009-49e7-b1f8-7fac4f78014b"
+      }
     }
   }
 }
