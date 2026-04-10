@@ -1,38 +1,57 @@
 import { Image } from "expo-image";
+import { Redirect } from "expo-router";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
-  return (
-    <SafeAreaView
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#00E567",
-        
-        display: "flex",
-        justifyContent: "center",
-        alignItems:"center"
-      }}
-    >
-      <View style={{ display: "flex", flexDirection:"row", justifyContent:"center", alignItems: "center", width: "100%"}}>
-        
-        <Image
-          source={require("@/assets/icons/company/tire.svg")}
-          placeholder={"tire"}
-          style={{ width: 45, height: 45}}
-          contentFit="contain"
-        />
-        
-        <Text style={{fontFamily:"Funnel_Bold", color:'white', fontSize: 40, marginLeft: 10}}>
-          autoquest
-        </Text>
-        
-      </View>
-        
+  
+  //Find Desination 
+  const [destination, setDestination] = useState(null)
+  useEffect(() => {
+    
+    setTimeout(() => {
+      setDestination("(onboarding)/onboarding")
+    }, 0); // Simulated delay for splash screen
 
-    </SafeAreaView>
-  );
+  }, []);
+
+  
+  
+  if (!destination)
+  {
+    
+    return (
+      <SafeAreaView
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#00E567",
+          
+          display: "flex",
+          justifyContent: "center",
+          alignItems:"center"
+        }}
+      >
+        <View style={{ display: "flex", flexDirection:"row", justifyContent:"center", alignItems: "center", width: "100%"}}>
+          
+          <Image
+            source={require("@/assets/icons/company/tire.svg")}
+            placeholder={"tire"}
+            style={{ width: 58, height: 67}}
+            contentFit="contain"
+          />
+  
+          
+        </View>
+          
+  
+      </SafeAreaView>
+    );
+  } else 
+  {
+    return <Redirect href={destination}/>
+  }
 }
 
 
