@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "autobuyer",
+    "name": "AutoQuest",
     "slug": "autobuyer",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -35,7 +35,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "imageWidth": 0,
           "resizeMode": "contain",
           "backgroundColor": "#00E567"
         }
