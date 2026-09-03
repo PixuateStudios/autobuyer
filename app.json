@@ -12,7 +12,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.autoquest.autobuyer",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSMicrophoneUsageDescription": "AutoQuest uses the microphone for in-app calls with dealers.",
+        "UIBackgroundModes": ["audio", "voip", "remote-notification", "fetch"]
       }
     },
     "android": {
@@ -23,7 +25,20 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "RECORD_AUDIO",
+        "MODIFY_AUDIO_SETTINGS",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_MICROPHONE",
+        "POST_NOTIFICATIONS",
+        "USE_FULL_SCREEN_INTENT",
+        "VIBRATE",
+        "MANAGE_OWN_CALLS",
+        "READ_PHONE_STATE",
+        "CALL_PHONE",
+        "BIND_TELECOM_CONNECTION_SERVICE"
+      ]
     },
     "web": {
       "output": "static",
@@ -39,7 +54,17 @@
           "resizeMode": "contain",
           "backgroundColor": "#00E567"
         }
-      ]
+      ],
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "enableBackgroundRemoteNotifications": true
+        }
+      ],
+      "@config-plugins/react-native-callkeep",
+      "./plugins/withVoipCallKeep",
+      "expo-task-manager"
     ],
     "experiments": {
       "typedRoutes": true,

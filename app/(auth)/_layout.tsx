@@ -1,11 +1,20 @@
-//Imports
-import { Stack } from "expo-router";
+import { useAuth } from "@/lib/auth";
+import { Redirect, Stack } from "expo-router";
 
-export default function Layout()
-{
-    return (
-        <Stack>
-            <Stack.Screen name="auth" options={{headerShown: false}}/>
-        </Stack>
-    )
+export default function AuthLayout() {
+  const { user, ready } = useAuth();
+
+  if (!ready) {
+    return null;
+  }
+
+  if (user) {
+    return <Redirect href="/home" />;
+  }
+
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="login" />
+    </Stack>
+  );
 }

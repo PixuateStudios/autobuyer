@@ -4,6 +4,7 @@ import { onboardingStyles } from '../onboarding';
 import { AnimatedEntryCard, InnerCircleAnimation, SpinningTextCircle } from '../animations';
 import { globalStyles } from '@/app/_layout';
 import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
 
 export function Page_1({setCurrentPage})
 {
@@ -136,6 +137,8 @@ export function Page_3({setCurrentPage})
 
 export function Page_4({setCurrentPage})
 {
+  const router = useRouter();
+
   return (
     <>
       
@@ -158,7 +161,7 @@ export function Page_4({setCurrentPage})
       
       {/*Footer*/}
       <View style={onboardingStyles.footer}>
-        <TouchableOpacity style={onboardingStyles.nextButton} onPress={() => { setCurrentPage(1)}}>
+        <TouchableOpacity style={onboardingStyles.nextButton} onPress={() => { router.push("/login") }}>
           <Text style={[globalStyles.h3, {color:"white"}]}>
             Next
           </Text>

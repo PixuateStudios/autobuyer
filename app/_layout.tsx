@@ -1,9 +1,15 @@
 //Imports
+import { IncomingCallOverlay } from "@/components/IncomingCallOverlay";
+import { AuthProvider } from "@/lib/auth";
+import { BuyerProvider } from "@/lib/buyerProfile";
+import { CallProvider } from "@/lib/calling";
+import "@/lib/callBackground";
+import { ChatProvider } from "@/lib/chat";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -34,21 +40,50 @@ export default function RootLayout() {
   }
   
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen
-        name="(auth)"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="(onboarding)"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      
-    </Stack>
+    <AuthProvider>
+      <BuyerProvider>
+        <ChatProvider>
+          <CallProvider>
+            <View style={{ flex: 1 }}>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              <Stack.Screen
+                name="(auth)"
+                options={{ headerShown: false, animation: "fade" }}
+              />
+              <Stack.Screen
+                name="(onboarding)"
+                options={{ headerShown: false, animation: "fade" }}
+              />
+              <Stack.Screen
+                name="(tabs)"
+                options={{ headerShown: false, animation: "fade" }}
+              />
+              <Stack.Screen
+                name="profile-edit"
+                options={{ headerShown: false, animation: "slide_from_bottom", presentation: "modal" }}
+              />
+              <Stack.Screen
+                name="preference-edit"
+                options={{ headerShown: false, animation: "slide_from_bottom", presentation: "modal" }}
+              />
+              <Stack.Screen
+                name="interest-edit"
+                options={{ headerShown: false, animation: "slide_from_bottom", presentation: "modal" }}
+              />
+              <Stack.Screen name="chat-new" options={{ headerShown: false, animation: "slide_from_bottom", presentation: "modal" }} />
+              <Stack.Screen name="chat/[id]" options={{ headerShown: false }} />
+              <Stack.Screen name="call/[id]" options={{ headerShown: false, animation: "fade", gestureEnabled: false }} />
+            </Stack>
+            <IncomingCallOverlay />
+            </View>
+          </CallProvider>
+        </ChatProvider>
+      </BuyerProvider>
+    </AuthProvider>
   );
 }
 
